@@ -1,6 +1,3 @@
-library(tidyverse)
-library(gridExtra)
-
 plot_audiogram_J <- function(df,width=4){
   shift_haba = 0.2
   yajirusi_tate = 4
@@ -58,22 +55,3 @@ plot_audiogram_J <- function(df,width=4){
   #                 ,axis.text.x = element_text(angle=90, hjust=1) #コメントを消すとX軸が縦書きに
          ))
 }
-
-
-# MODIFY FILENAME HERE
-table <- read_csv("test.csv")
-
-quartzFonts(HiraKaku = quartzFont(c("HiraginoSans-W5", "HiraginoSans-W7", "HiraginoSans-W5", "HiraginoSans-W7")))
-theme_set(theme_bw(base_family="HiraKaku"))
-
-#theme_set(theme_bw(base_family="Japan1"))
-
-res <- list()
-for(i in 1:nrow(table)){
-  res[[i]] <- plot_audiogram_J(table[i,],width=2) 
-}
-
-ml <- marrangeGrob(res, nrow=5, ncol=4, top="")
-#ggsave(file="audiosV.pdf",plot=ml,dpi=300,width = 8,height=11.5)
-print(ml)
-
